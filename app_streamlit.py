@@ -12,6 +12,7 @@ def age(model, headLength, skullWidth, totalLength, eye, chestGirth, bellyGirth)
     return model.predict(x_scaled)[0]
 
 st.title("Age d'un opossum")
+st.subheader("Entrez les caractéritiques de l'opossum :")
 headLength = st.slider('headLength (mm)',80, 110, 92)
 skullWidth = st.slider('skullWidth (mm)', 40, 80, 56)
 totalLength = st.slider('totalLength (cm)', 70, 100, 88)
