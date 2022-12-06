@@ -22,3 +22,5 @@ belly = st.slider('bellyGirth (cm)', 20, 50, 32)
 
 prediction = age(knn_regressor, head, skull, totalL, eye_dist, chest, belly)
 st.write("L'âge de l'opossum est de : ", round(prediction, 1), "ans")
+
+st.image('possum.jpg')
