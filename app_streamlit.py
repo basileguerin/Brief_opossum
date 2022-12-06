@@ -2,7 +2,7 @@ import joblib
 import streamlit as st
 import numpy as np
 
-model = joblib.load('final_model')
+knn_regressor = joblib.load('final_model')
 scaler = joblib.load('scaler')
 
 def age(model, headLength, skullWidth, totalLength, eye, chestGirth, bellyGirth):
@@ -13,12 +13,12 @@ def age(model, headLength, skullWidth, totalLength, eye, chestGirth, bellyGirth)
 
 st.title("Age d'un opossum")
 st.subheader("Entrez les caractéritiques de l'opossum :")
-headLength = st.slider('headLength (mm)',80, 110, 92)
-skullWidth = st.slider('skullWidth (mm)', 40, 80, 56)
-totalLength = st.slider('totalLength (cm)', 70, 100, 88)
-eye = st.slider('eye distance', 10, 20, 15)
-chestGirth = st.slider('chestGirth (cm)', 20, 35, 27)
-bellyGirth = st.slider('bellyGirth (cm)', 20, 50, 32)
+head = st.slider('headLength (mm)',80, 110, 92)
+skull = st.slider('skullWidth (mm)', 40, 80, 56)
+totalL = st.slider('totalLength (cm)', 70, 100, 88)
+eye_dist = st.slider('eye distance', 10, 20, 15)
+chest = st.slider('chestGirth (cm)', 20, 35, 27)
+belly = st.slider('bellyGirth (cm)', 20, 50, 32)
 
-prediction = age(model, headLength, skullWidth, totalLength, eye, chestGirth, bellyGirth)
+prediction = age(knn_regressor, head, skull, totalL, eye_dist, chest, belly)
 st.write("L'âge de l'opossum est de : ", round(prediction, 1), "ans")
